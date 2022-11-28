@@ -1,64 +1,50 @@
-<!--<main id="main" class="main">-->
-<!--  <section class="section">-->
-<!--    <div class="card">-->
-<!--      <div class="card-body">-->
-    <h2 class="card-title">Add Contrat</h2>
-    <!-- Vertical Form -->
-    <form class="row g-3" [formGroup]="DepartForm" (ngSubmit)="onSubmit()">
-      
-      <div class="col-6 offset-3">
-        <label class="form-label">Nom Departement</label>
-        <div class="input-group mb-3">
-          <!-- <span class="input-group-text">$</span> -->
-          <input
-            [ngClass]="{
-              'input-invalid': nomDepart.touched && nomDepart.invalid,
-              'input-valid': nomDepart.touched && nomDepart.valid
-            }"
-            type="text"
-            class="form-control"
-            aria-label="Amount (to the nearest dollar)"
-            formControlName="montant"
-            tabindex="-1"
-          />
-          <!-- <span class="input-group-text">.00</span> -->
-          <div
-            class="message-invalid"
-            *ngIf="nomDepart.touched && nomDepart.hasError('required')"
-          >
-            Nom  Departement Is Required
-          </div>
-          <!--success message-->
-          <div class="message-valid" *ngIf="nomDepart.touched && !nomDepart.errors">
-            Looks good!
-          </div>
+<h2 class="card-title">Add Contrat</h2>
+  <!-- Vertical Form -->
+  <form class="row g-3" [formGroup]="departementForm" (ngSubmit)="onSubmit()">
+
+    <div class="col-6 offset-3">
+      <label class="form-label">Nom Departement</label>
+      <div class="input-group mb-3">
+        <input
+          [ngClass]="{
+            'input-invalid': nomDepart.touched && nomDepart.invalid,
+            'input-valid': nomDepart.touched && nomDepart.valid
+          }"
+          type="text"
+          class="form-control"
+          formControlName="nomDepart"
+        />
+        <div
+          class="message-invalid"
+          *ngIf="nomDepart.touched && nomDepart.hasError('required')"
+        >
+          Nom  Departement Is Required
+        </div>
+        <!--success message-->
+        <div class="message-valid" *ngIf="nomDepart.touched && !nomDepart.errors">
+          Looks good!
         </div>
       </div>
-      <!--          [disabled]="this.contratForm.status == 'INVALID'"-->
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary mx-2">
-          <i class="fa-regular fa-floppy-disk pe-2"></i>Save
-        </button>
-        <button
-          type="button"
-          class="btn btn-warning mx-2"
-          (click)="resetControls()"
-        >
-          <i class="fa-solid fa-broom pe-2"></i>
-          Reset
-        </button>
-        <button
-          (click)="closeDialog()"
-          type="button"
-          class="btn btn-outline-danger"
-        >
-          <i class="fa-solid fa-rotate-left pe-2"></i>Back To Departements Page
-        </button>
-      </div>
-    </form>
-    <!-- Vertical Form -->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--  </section>-->
-    <!--</main>-->
-    
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary mx-2">
+        <i class="fa-regular fa-floppy-disk pe-2"></i>Save
+      </button>
+      <button
+        type="button"
+        class="btn btn-warning mx-2"
+        (click)="resetControls()"
+      >
+        <i class="fa-solid fa-broom pe-2"></i>
+        Reset
+      </button>
+      <button
+        (click)="closeDialog()"
+        type="button"
+        class="btn btn-outline-danger"
+      >
+        <i class="fa-solid fa-rotate-left pe-2"></i>Back
+      </button>
+    </div>
+  </form>

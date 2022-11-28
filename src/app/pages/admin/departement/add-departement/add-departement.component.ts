@@ -9,45 +9,47 @@ import { ApiService } from 'src/app/core/services/admin/api.service';
   styleUrls: ['./add-departement.component.css']
 })
 export class AddDepartementComponent implements OnInit {
-  
+
+  departementForm!: FormGroup;
   nomDepart!: FormControl;
-  DepartForm!: FormGroup
 
   constructor(
     private apiService: ApiService,
-    public dialogRef: MatDialogRef<AddDepartementComponent>) { }
+    public dialogRef: MatDialogRef<AddDepartementComponent>
+  ) {
+    this.initForm();
+    this.createForm();
+  }
 
   ngOnInit(): void {
   }
 
-
   initForm() {
-    
     this.nomDepart = new FormControl('', [Validators.required]);
   }
 
   createForm() {
-    this.DepartForm = new FormGroup({
+    this.departementForm = new FormGroup({
       nomDepart: this.nomDepart,
     });
   }
 
   onSubmit() {
-    const departToAdd = {
-      nomDepart: this.DepartForm.value.nomDepart,
+    const departementToAdd = {
+      nomDepart: this.departementForm.value.nomDepart,
     };
-    this.addDepart(departToAdd);
+    this.addDepartement(departementToAdd);
     this.resetControls();
     this.closeDialog();
-    location.reload();
+    // location.reload();
   }
 
-  addDepart(departBody: Object) {
-    this.apiService.add('addDepartement', departBody).subscribe((departement) => null);
+  addDepartement(departBody: Object) {
+    this.apiService.add('addDepart', departBody).subscribe((departement) => null);
   }
 
   resetControls() {
-    this.DepartForm.reset();
+    this.departementForm.reset();
   }
 
   closeDialog() {
